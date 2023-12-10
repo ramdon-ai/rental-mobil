@@ -10,33 +10,35 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function showRegistrationForm()
+    public function registerform()
     {
         return view('register');
     }
 
-    public function register(Request $request)
+    public function aksiregister(Request $request)
     {
         // Validasi input
         $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string',
-            'phone_number' => 'required|string',
-            'sim' => 'required|string',
+            'nama' => 'required|string|max:255',
+            'alamat' => 'required|string',
+            'no_hp' => 'required|string',
+            'no_sim' => 'required|string',
+            'role' => 'required|string',
             'password' => 'required|string|min:8',
         ]);
 
         // Buat user baru
         User::create([
-            'name' => $request->input('name'),
-            'address' => $request->input('address'),
-            'phone_number' => $request->input('phone_number'),
-            'sim' => $request->input('sim'),
+            'nama' => $request->input('nama'),
+            'alamat' => $request->input('alamat'),
+            'no_hp' => $request->input('no_hp'),
+            'no_sim' => $request->input('no_sim'),
+            'role' => $request->input('role'),
             'password' => bcrypt($request->input('password')),
         ]);
 
         // Redirect atau lakukan aksi lainnya setelah registrasi berhasil
-        return redirect()->route('register')->with('success', 'Registrasi berhasil!');
+        return redirect('register')->with('success', 'Registrasi berhasil!');
     }
 }
 

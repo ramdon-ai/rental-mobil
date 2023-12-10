@@ -21,14 +21,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('register/action', [RegisterController::class, 'register'])->name('actionregister');
+Route::get('register', [RegisterController::class, 'registerform'])->name('register');
+Route::post('register/action', [RegisterController::class, 'aksiregister'])->name('aksiregister');
 
-Route::get('login', [LoginController::class, 'login'])->name('login');
-Route::post('login/action', [LoginController::class, 'actionlogin'])->name('actionlogin');
+Route::get('login', [LoginController::class, 'loginform'])->name('login');
+Route::post('login/action', [LoginController::class, 'aksilogin'])->name('aksilogin');
+
 Route::middleware(['auth'])->group(function () {
-Route::get('addcar', [CarController::class, 'car'])->name('car');
-Route::post('addcar/action', [CarController::class, 'addcar'])->name('addcar');
-Route::get('home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+    Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('datacar', [CarController::class, 'tampilcar'])->name('datacar');
+    Route::get('addcar', [CarController::class, 'tambahcar'])->name('addcar');
+    Route::post('addcar/action', [CarController::class, 'aksicar'])->name('aksicar');
+    Route::get('car/hapus/{id}', [CarController::class, 'hapus'])->name('hapuscar');
+    Route::get('logout', [LoginController::class, 'aksilogout'])->name('aksilogout');
 });
-Route::get('logout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
+
+
+

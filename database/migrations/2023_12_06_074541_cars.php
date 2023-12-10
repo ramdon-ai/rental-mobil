@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->string('brand');
+            $table->string('merek');
             $table->string('model');
-            $table->string('license_plate')->unique();
-            $table->decimal('harga', 10, 2);
+            $table->string('no_plat')->unique();
+            $table->decimal('sewa', 10, 2);
             $table->timestamps();
         });
     }

@@ -1,61 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Registrasi Page</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    </head>
 
-<body>
-<section class="" style="background-color: #508bfc;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
+    <body>
+        <div class="container"><br>
+            <div class="col-md-4 col-md-offset-4">
+                <h2 class="text-center">Silahkan Registrasi</h2>
+                <hr>
 
-          <h3 class="mb-5">Registrasi</h3>
+                <form action="{{ route('aksiregister') }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama" required="">
+                    </div>
 
-<form method="POST" action="{{ route('actionregister') }}">
-    @csrf
+                    <div class="form-group">
+                        <label>Alamat</label>
+                        <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat" required="">
+                    </div>
 
-    <div class="form-outline mb-4">
-        <label class="form-label" for="name">Nama</label>
-        <input type="text" id="name" name="name" class="form-control form-control-lg" required />
-    </div>
+                    <div class="form-group">
+                        <label>No. Handphone</label>
+                        <input type="text" name="no_hp" class="form-control" placeholder="Masukkan No. Handphone" required="">
+                    </div>
 
-    <div class="form-outline mb-4">
-        <label class="form-label" for="address">Alamat</label>
-        <input type="text" id="address" name="address" class="form-control form-control-lg" required />
-    </div>
+                    <div class="form-group">
+                        <label>No. SIM</label>
+                        <input type="text" name="no_sim" class="form-control" placeholder="No. SIM" required="">
+                    </div>
 
-    <div class="form-outline mb-4">
-        <label class="form-label" for="phone_number">No. Handphone</label>
-        <input type="text" id="phone_number" name="phone_number" class="form-control form-control-lg" required />
-    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                    </div>
 
-    <div class="form-outline mb-4">
-        <label class="form-label" for="driving_license_number">No. SIM</label>
-        <input type="text" id="driving_license_number" name="sim" class="form-control form-control-lg" required />
-    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="role" class="form-control" placeholder="role" value="pengguna">
+                    </div>
 
-    <div class="form-outline mb-4">
-        <label class="form-label" for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control form-control-lg" required />
-    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Registrasi</button>
 
-    <button class="btn btn-success btn-lg btn-block" type="submit">Register</button>
-    <p>Sudah punya akun? <a href="{{ route('login') }}">Login</a></p>
-
-</form>
-
-          </div>
+                    <hr>
+                    <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Login</a> sekarang!</p>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<body>
+    </body>
+</html>

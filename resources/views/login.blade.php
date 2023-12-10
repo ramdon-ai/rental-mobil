@@ -1,51 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login Page</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    </head>
 
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-</head>
+    <body>
+        <div class="container"><br>
+            <div class="col-md-4 col-md-offset-4">
+                <h2 class="text-center">Silahkan Login</h2>
+                <hr>
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        <b>Opps!</b> {{ session('error') }}
+                    </div>
+                @endif
 
-<body>
-<section class="" style="background-color: #508bfc;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
+                <form action="{{ route('aksilogin') }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label>No. SIM</label>
+                        <input type="text" name="no_sim" class="form-control" placeholder="Masukkan No. SIM" required="">
+                    </div>
 
-            <h3 class="mb-5">Login</h3>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                    </div>
 
-            @if(session('error'))
-            <div class="alert alert-danger">
-                <b>Opps!</b> {{session('error')}}
+                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+
+                    <hr>
+                    <p class="text-center">Belum punya akun? <a href="{{ route('register') }}">Register</a> sekarang!</p>
+                </form>
             </div>
-            @endif
-            <form action="{{ route('actionlogin') }}" method="post">
-            @csrf
-
-            <div class="form-outline mb-4">
-              <label class="form-label" for="typePasswordX-2">No. SIM</label>
-              <input type="text" id="typePasswordX-2" name="sim" class="form-control form-control-lg" />
-            </div>
-
-            <div class="form-outline mb-4">
-              <label class="form-label" for="typePasswordX-2">Password</label>
-              <input type="password" id="typePasswordX-2" name="password" class="form-control form-control-lg" />
-            </div>
-
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-
-            <hr class="my-4">
-
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<body>
+    </body>
+</html>
